@@ -1,0 +1,23 @@
+
+import os
+import telebot
+
+TOKEN = os.getenv("BOT_TOKEN")
+bot = telebot.TeleBot(TOKEN)
+
+@bot.message_handler(commands=["start"])
+def start(message):
+    bot.reply_to(
+        message,
+        "Welcome! I am your Aviator information bot. "
+        "I cannot predict real Aviator crash results."
+    )
+
+@bot.message_handler(commands=["help"])
+def help_command(message):
+    bot.reply_to(
+        message,
+        "Use /start to begin and /help for assistance."
+    )
+
+bot.infinity_polling()
